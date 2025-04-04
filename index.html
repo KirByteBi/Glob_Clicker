@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Glob Clicker: Smash Them! V1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="language-buttons">
+    <button id="spanishBtn" class="lang-btn active">ES</button>
+    <button id="englishBtn" class="lang-btn">EN</button>
+  </div>
+  <div class="pueblo">
+    <img src="img/Fondo-PueGlob.png" class="fondo-pueblo" alt="Pueblo cartoon">
+    <div class="game-container">
+      <h1 id="game-title">🌻 Glob Clicker 🏡 V1</h1>
+      <div class="contador-container">
+        <p id="counter">Globs: <span>0</span></p>
+        <div class="gps-display">
+          (+<span id="gps">0</span>/s)
+        </div>
+      </div>
+      <div class="glob-zone">
+        <button class="glob-btn" id="main-glob"><img src="img/CuteGlob.png" alt="CuteGlob" class="glob-img"></button>
+        <div id="click-effects" class="click-effects-container"></div>
+      </div>
+    </div>
+    <button id="abrirTienda" class="boton-tienda">🏪 Abrir Tienda</button>
+    <div id="tienda-popup" class="tienda-popup">
+      <div class="contenido-tienda">
+        <h2 id="shop-title">🏪 Tienda de Mejoras</h2>
+        <div id="mejoras-container" class="mejoras-container"></div>
+        <button id="cerrar-tienda" class="cerrar-tienda">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  <div id="emblemas-container"></div>
+  <div id="pyces-container"></div>
+  <div id="globs-container"></div>
+  <script src="translations.js"></script> 
+  <script src="script.js"></script>
+</body>
+</html>

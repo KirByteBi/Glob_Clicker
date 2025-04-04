@@ -1,0 +1,455 @@
+/* styles.css */
+:root {
+    --cielo: #78ff8a;
+    --montañas: #ffb950;
+    --suelo: #669c4c;
+    --casitas: #e27b06;
+    --contador: #4fe032;
+    --texto: #5d4037;
+    --sombra: rgba(0, 0, 0, 0.1);
+    --destello: #e2ff3c;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Luckiest Guy', cursive;
+    height: 100vh;
+    cursor: url('img/cursor-glob.png'), auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cielo);
+}
+
+.pueblo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.fondo-pueblo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+.game-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px var(--sombra);
+    border: 3px dashed var(--destello);
+}
+
+#counter {
+    font-size: 1.8rem;
+    background: var(--contador);
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.tienda-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-tienda {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cerrar-tienda {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mejoras-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.mejora {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid var(--montañas);
+    transition: all 0.3s;
+    text-align: center;
+    position: relative;
+}
+
+.mejora:hover {
+    transform: translateY(-5px);
+    background: var(--destello);
+}
+
+.mejora.comprada {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.comprado-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: green;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.icono-mejora {
+    width: 50px;
+    height: 50px;
+}
+
+.glob-zone {
+    position: relative;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+}
+
+.glob-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.glob-img {
+    width: 150px;
+    transition: all 0.2s;
+}
+
+.glob-img:hover {
+    transform: scale(1.05);
+}
+
+.glob-img:active {
+    transform: scale(0.95);
+}
+
+.contador-container {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.gps-display {
+    font-size: 0.8em;
+    color: #4CAF50;
+}
+
+.boton-tienda {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 100;
+}
+
+.boton-tienda:hover {
+    background: #45a049;
+}
+
+.click-effect {
+    position: absolute;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatUp 1s ease-out forwards;
+    font-size: 20px;
+}
+
+.click-effect.positive {
+    color: var(--contador);
+}
+
+.click-effect.negative {
+    color: #ff4444;
+    font-size: 24px;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+.pyce {
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 50;
+}
+
+.pyce:hover {
+    transform: scale(1.1);
+}
+
+.pyce.stupid {
+    animation: float 3s infinite ease-in-out;
+}
+
+.pyce.guest {
+    animation: shake 0.5s infinite;
+}
+
+.pyce.noob {
+    animation: float 2s infinite ease-in-out, shake 0.8s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.glob-visual {
+    position: absolute;
+    z-index: 100;
+    transition-timing-function: linear;
+}
+
+#emblemas-container {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 200px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.emblema-badge {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: help;
+}
+
+.emblema-badge.obtenido {
+    border: 2px solid gold;
+}
+
+.emblema-badge::after {
+    content: attr(data-nombre);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.emblema-badge:hover::after {
+    visibility: visible;
+    opacity: 1;
+    bottom: calc(100% + 5px);
+}
+
+.emblema-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.emblema-contenido {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 300px;
+}
+
+.emblema-icono {
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    display: block;
+}
+
+.cerrar-emblema {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.mejora .no-asequible {
+    color: #ff4444;
+}
+
+/* Efectos visuales */
+.click-effect.positive {
+    color: var(--contador); /* Verde */
+}
+
+.click-effect.negative {
+    color: #ff4444; /* Rojo (para errores) */
+}
+
+.click-effect.pyce-effect {
+    color: #00ffff; /* Azul cian */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.click-effect.auto-glob {
+    color: #4fe032; /* Verde claro */
+    font-size: 18px;
+    position: fixed;
+    animation: floatUp 1.5s ease-out forwards;
+}
+
+/* Botones de traducción */
+.language-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan si no caben */
+}
+
+.lang-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-family: 'Luckiest Guy', cursive;
+    transition: all 0.3s;
+}
+
+.lang-btn.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.lang-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        height: auto;
+    }
+
+    .game-container {
+        width: 90%;
+        padding: 15px 25px;
+        transform: translate(-50%, 0); /* Reajustamos la posición */
+    }
+
+    .mejoras-container {
+        grid-template-columns: 1fr 1fr; /* Menos columnas en pantallas pequeñas */
+    }
+
+    .glob-zone {
+        width: 150px;
+        height: 150px;
+    }
+
+    .glob-btn {
+        width: 100%;
+    }
+
+    .emblema-badge {
+        width: 25px;
+        height: 25px;
+    }
+
+    .language-buttons {
+        top: 10px; /* Ajuste la posición superior para pantallas pequeñas */
+        right: 10px; /* Ajuste la posición derecha para pantallas pequeñas */
+        gap: 5px; /* Reducir el espacio entre los botones */
+    }
+
+    .lang-btn {
+        padding: 6px 12px; /* Reducir el tamaño del padding en pantallas pequeñas */
+        font-size: 14px; /* Reducir el tamaño del texto */
+    }
+}
